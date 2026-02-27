@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+# Video Converter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A browser-based video converter and compressor powered by FFmpeg.wasm. Convert and compress videos entirely client-side with no server uploads required.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Convert** videos between formats (MP4, WebM, MOV, AVI, MKV, and more)
+- **Compress** videos with adjustable presets (light, medium, heavy)
+- **Batch processing** — queue multiple files at once
+- **Download all** completed files in one click
+- **100% client-side** — files never leave your browser
+- **Dark cinematic UI** with amber/gold accents, film grain overlay, and glass morphism
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 + TypeScript
+- Vite
+- Tailwind CSS v4
+- shadcn/ui
+- FFmpeg.wasm
+- Lucide React icons
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js 18+
+- npm
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Install
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+The dev server must serve with Cross-Origin Isolation headers (COOP/COEP) for `SharedArrayBuffer` support, which FFmpeg.wasm requires. The Vite config handles this automatically.
+
+### Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Usage
+
+1. Drop video files onto the drop zone or click to browse
+2. Choose **Convert** or **Compress** mode
+3. Select an output format and/or compression preset
+4. Click **Start Conversion** / **Start Compression**
+5. Download individual files or use **Download All**
+
+## License
+
+MIT
